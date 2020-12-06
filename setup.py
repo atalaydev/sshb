@@ -15,6 +15,7 @@ setuptools.setup(
     description="Connecting SSH a lot ? Try sshb.",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    keywords="ssh sshb ssh-bookmark",
     url="https://github.com/atalaydev/sshb",
     packages=setuptools.find_packages(),
     install_requires=install_requires,
