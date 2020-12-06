@@ -11,7 +11,10 @@ class SSHB():
         with open(Path.home() / config_file, 'r') as stream:
             try:
                 data = yaml.load(stream, Loader=yaml.FullLoader)
-                self.__build_globals(data.get('globals'))
+                if 'globals' in data:
+                    self.__build_globals(data.get('globals'))
+                else:
+                    self.__globals = None
                 self.__build_hosts(data.get('hosts'))
             except Exception:
                 raise
