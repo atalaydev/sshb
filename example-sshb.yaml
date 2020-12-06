@@ -1,14 +1,14 @@
 globals:
-  user: global-user
+  user: root
   identity: .ssh/id_rsa.pub
   port: 22
 hosts:
   - ssh-server-1:
       host: server-1
-      user: user-1
-      identity: .ssh/id_rsa-server-1.pub
+      user: ec2-user
+      identity: .ssh/id_rsa-for-server-1.pub
   - ssh-server-2:
       host: server-2
       port: 88
-      user: user-2
-      identity: .ssh/id_rsa-server-2.pub
+      user: ubuntu
+      identity: .ssh/id_rsa-for-server-2.pub
