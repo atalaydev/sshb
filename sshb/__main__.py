@@ -9,7 +9,7 @@ def main(args: list = None) -> int:
     instance = SSHB()
     return instance(
         prompt(
-            'Please start typing hostname or press \'tab\' to auto-complete: ',
+            'Please start typing hostname or press \'tab\' to activate auto-complete: ',
             completer=WordCompleter(
                 instance.hosts
             )
