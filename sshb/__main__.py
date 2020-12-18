@@ -6,6 +6,19 @@ from prompt_toolkit.completion import WordCompleter
 
 def main(args: list = None) -> int:
     """ The main sshb routine. """
+    if len(args) > 0:
+        if args[0] == 'manager':
+            sub = prompt(
+                'Yes, sir ? Tell me the action (\'add\', \'delete\', \'update\')',
+                completer=WordCompleter(
+                    ('add', 'update', 'delete')
+                )
+            )
+            print(SSHB.manager(sub))
+        else:
+            print('Invalid command supplied!')
+        return 0
+
     instance = SSHB()
     return instance(
         prompt(
@@ -18,4 +31,7 @@ def main(args: list = None) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:]))
+    try:
+        main(sys.argv[1:])
+    except KeyboardInterrupt:
+        sys.exit(0)

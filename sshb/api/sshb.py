@@ -40,3 +40,18 @@ class SSHB():
     @property
     def hosts(self) -> list:
         return list(self.__hosts.keys())
+
+    @classmethod
+    def add_host(cls):
+        pass
+
+    @classmethod
+    def manager(cls, command):
+        switcher = {
+            'add': cls.add_host(),
+            'update': (lambda: print('update')),
+            'delete': (lambda: print('delete')),
+        }
+
+        func = switcher.get(command, lambda: print('Invalid command supplied!'))
+        func()
