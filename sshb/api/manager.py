@@ -1,8 +1,12 @@
+from prompt_toolkit.shortcuts import input_dialog
+from .core import Host
+
+
 class Manager():
 
     def __init__(self, command):
         commands = {
-            'add': (lambda: self.add()),
+            'add': self.add,
             'update': (lambda: print('update')),
             'delete': (lambda: print('delete')),
         }
@@ -11,4 +15,7 @@ class Manager():
         func()
         
     def add(self):
-        print('add')
+        for attribute in Host.__attributes__:
+            input_dialog(
+                title=Host.__prompts__.get(attribute)
+            ).run()
