@@ -1,7 +1,9 @@
+import os
 import sys
 from sshb.api import SSHB, Manager
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.shortcuts import radiolist_dialog
 
 
 def main(args: list = None) -> int:
@@ -9,12 +11,15 @@ def main(args: list = None) -> int:
     if len(args) > 0:
         if args[0] == 'manager':
             return Manager(
-                prompt(
-                    'Yes, sir! Tell me the action (\'add\', \'delete\', \'update\'): ',
-                    completer=WordCompleter(
-                        ('add', 'update', 'delete')
-                    )
-                )
+                radiolist_dialog(
+                    title='SSHB Manager',
+                    text='Yes, sir! Tell me the action:',
+                    values=[
+                        ('add', 'Add new host.'),
+                        ('update', 'Update an existing host.'),
+                        ('delete', 'Delete an existing host.')
+                    ]
+                ).run()
             )
         else:
             print('Invalid command supplied!')
@@ -32,6 +37,7 @@ def main(args: list = None) -> int:
 
 
 if __name__ == "__main__":
+    os.system('cls||clear')
     try:
         main(sys.argv[1:])
     except KeyboardInterrupt:
