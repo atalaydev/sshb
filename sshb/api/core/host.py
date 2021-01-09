@@ -5,6 +5,12 @@ from .exceptions import ImproperlyConfiguredException
 
 class Host():
     __attributes__ = ('host', 'user', 'port', 'identity')
+    __prompts__ = {
+        'host': 'What we should call this host ?',
+        'port': 'What is port of the host ?',
+        'user': 'What is the username ?',
+        'identity': 'Where the identity file is stored ?',
+    }
 
     def __init__(self, attributes: dict, _globals: dict) -> None:
         for attribute in list(attributes.keys()):
